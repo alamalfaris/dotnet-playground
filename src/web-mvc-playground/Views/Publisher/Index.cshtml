@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Publisher>
+
+<h2>Publishers</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Logo</th>
+            <th>Info</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pub in Model)
+        {
+            <tr>
+                <td>@pub.PubName</td>
+                <td>
+                    @if (pub.Logo != null)
+                    {
+                        <img src="@Url.Action("GetLogoByIdAsync", "Publisher", new { id = pub.PubId })" alt="Logo" style="max-width:100px;" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
